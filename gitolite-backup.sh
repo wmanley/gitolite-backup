@@ -1,4 +1,13 @@
-gitolite_login=gitolite@git-dev.dev.youview.co.uk
+#!/bin/sh
+
+
+gitolite_login=$1
+
+if [ -z "$gitolite_login" ];
+then
+	echo -e "Usage\n\t$0 [gitolite-ssh-login]" >&2
+	exit 1
+fi
 
 list_repos() {
 	ssh "$1" info 2>/dev/null | grep -P '\t' | cut -f2
