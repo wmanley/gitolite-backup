@@ -62,7 +62,7 @@ for i in $(seq 2);
 do
 	list_repos "$gitolite_login" | while read repo
 	do
-		if [ ! -d "$repo" ]; then
+		if [ ! -d "repos/$repo" ]; then
 			echo "Found new repo $repo"
 			( create_repo "$gitolite_login" "$repo" )
 		fi
